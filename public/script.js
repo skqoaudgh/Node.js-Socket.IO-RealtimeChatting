@@ -14,6 +14,14 @@ btn.addEventListener('click', (event) => {
 
 socket.on('chat message', (msg) => {
     const msgbox = document.createElement('li');
+    msgbox.className = "chat";
     msgbox.innerHTML = msg; 
+    list.appendChild(msgbox);
+});
+
+socket.on('info message', (msg) => {
+    const msgbox = document.createElement('li');
+    msgbox.className = "info";
+    msgbox.innerHTML = msg;
     list.appendChild(msgbox);
 });

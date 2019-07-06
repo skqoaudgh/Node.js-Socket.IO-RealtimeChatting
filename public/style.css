@@ -17,6 +17,15 @@
     padding: 5px;
 }
 
+.chat {
+    color: black;
+}
+
+.info {
+    color: red;
+    font-weight: bold;
+}
+
 .message li:nth-child(odd) {
     background: white;
 }
