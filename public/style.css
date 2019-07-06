@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message {
+    background: #e0e0e0;
+    border: 2px solid black;
+    width: 500px;
+    height: 500px;
+}
+
+.message li {
+    list-style-type: none; 
+    margin: 0 0 0 -40px;
+    padding: 5px;
+}
+
+.message li:nth-child(odd) {
+    background: white;
+}
+
+.inputform form {
+    display: flex;
+    margin: 5px;
+}
+
+#textcontrol {
+    width: 442px;
+    height: 20px;
+    outline: none;
+    border: 2px solid black;
+    padding: 5px;
+    margin-right: -2px;
+    font-size: 16px;
+}
+
+#buttoncontrol {
+    all: unset;
+    width: 40px;
+    height: 24px;
+    cursor: pointer;
+    border: 2px solid black;
+    padding: 3px;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
