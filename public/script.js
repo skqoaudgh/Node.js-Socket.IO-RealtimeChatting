@@ -2,11 +2,15 @@ const form = document.getElementById('form');
 const input = document.getElementById('textcontrol');
 const btn = document.getElementById('buttoncontrol');
 const list = document.getElementById('list');
+const nick = document.getElementById('nickcontrol');
 
 const socket = io();
 
 btn.addEventListener('click', (event) => {
     event.preventDefault();
+    if(input.value == '') 
+        return false;
+
     socket.emit('chat message', input.value);
     input.value = '';
     return false;
@@ -15,7 +19,7 @@ btn.addEventListener('click', (event) => {
 socket.on('chat message', (msg) => {
     const msgbox = document.createElement('li');
     msgbox.className = "chat";
-    msgbox.innerHTML = msg; 
+    msgbox.innerHTML = nick.value+': '+msg; 
     list.appendChild(msgbox);
 });
 
