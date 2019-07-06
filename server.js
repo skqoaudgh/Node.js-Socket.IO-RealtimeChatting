@@ -10,8 +10,10 @@ app.get('/', (req, res ,next) => {
 });
 
 io.on('connection', (socket) => {
-    console.log('a user connected!');
-})
+    socket.on('chat message', (msg) => {
+        io.emit('chat message', msg);
+    });
+});
 
 http.listen(3000, () => {
     console.log('express server is opened on port 3000');
