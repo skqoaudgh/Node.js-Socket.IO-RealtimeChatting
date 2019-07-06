@@ -15,7 +15,7 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('info message', 'someone disconnected');
     });
     socket.on('chat message', (msg) => {
-        io.emit('chat message', msg);
+        socket.broadcast.emit('chat message', msg);
     });
 });
 
