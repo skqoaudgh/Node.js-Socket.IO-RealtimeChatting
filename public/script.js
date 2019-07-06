@@ -3,21 +3,33 @@ const input = document.getElementById('textcontrol');
 const btn = document.getElementById('buttoncontrol');
 const list = document.getElementById('list');
 const nick = document.getElementById('nickcontrol');
+const typing = document.getElementById('typing');
 
 const socket = io();
 
 function addChatting(msg) {
     const msgbox = document.createElement('li');
     msgbox.className = "chat";
-    msgbox.innerHTML = nick.value+': '+msg; 
+    msgbox.innerHTML = nick.value+': '+msg;
     list.appendChild(msgbox);
 }
+
+input.addEventListener('keyup', (event) => {
+    if(input.value.length > 0) {
+        socket.emit('typing', nick.value + ' is typing...');
+    }
+    else {
+        socket.emit('typing', '');
+    }
+});
+
 
 btn.addEventListener('click', (event) => {
     event.preventDefault();
     if(input.value == '') 
         return false;
 
+    socket.emit('typing', '');
     socket.emit('chat message', input.value);
     addChatting(input.value);
     input.value = '';
@@ -33,4 +45,8 @@ socket.on('info message', (msg) => {
     msgbox.className = "info";
     msgbox.innerHTML = msg;
     list.appendChild(msgbox);
+});
+
+socket.on('typing', (msg) => {
+    typing.innerHTML = msg;
 });

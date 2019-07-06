@@ -17,6 +17,9 @@ io.on('connection', (socket) => {
     socket.on('chat message', (msg) => {
         socket.broadcast.emit('chat message', msg);
     });
+    socket.on('typing', (msg) => {
+        socket.broadcast.emit('typing', msg);
+    });
 });
 
 http.listen(3000, () => {
